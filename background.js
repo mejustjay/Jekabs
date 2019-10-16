@@ -2,15 +2,12 @@ var canvas;
 
 
 function setup () {
-  canvas = createCanvas (windowWidth, windowHeight);
-  canvas.position (0,0);
-  canvas.style ('z-index', '-1');
+  createCanvas (windowWidth, windowHeight);
+
 
 }
 
 function draw() {
-  background(110);
-
-
+  background(11,230,29);
 
 }
