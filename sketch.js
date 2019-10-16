@@ -33,9 +33,7 @@ function keyPressed() {
 }
 
 function draw() {
-  if (mouseIsPressed) {
-    line(pmouseX, pmouseY, mouseX, mouseY);
-  }
+
   xpos = xpos + xspeed * xdirection;
   ypos = ypos + yspeed * ydirection;
 
@@ -50,4 +48,8 @@ function draw() {
 
   // Draw the shape
   ellipse(xpos, ypos, rad, rad);
+
+  if (mouseIsPressed) {
+    line(pmouseX, pmouseY, mouseX, mouseY);
+  }
 }
