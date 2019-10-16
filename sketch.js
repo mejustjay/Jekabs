@@ -21,5 +21,4 @@ function draw() {
   if (mouseIsPressed) {
     line(pmouseX, pmouseY, mouseX, mouseY);
   }
-  // var vol = mic.getLevel();
 }
