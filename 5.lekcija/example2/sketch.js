@@ -1,35 +1,48 @@
 var canvas;
-let mic;
+var speed = 0.05;
+let img;
+let size = 20;
 
 
 function windowResized() {
-  console.log('resized');
   resizeCanvas(windowWidth, windowHeight);
+
 }
 function setup () {
-    canvas = createCanvas (windowWidth,windowHeight);
+    canvas = createCanvas(windowWidth,windowHeight,WEBGL);
     canvas.position (0,0);
     canvas.style ('z-index', '-1');
-    mic = new p5.AudioIn();
-    mic.start();
-
-
-
-
+    img = loadImage ("https://res.cloudinary.com/teepublic/image/private/s--3ZgkfM_p--/t_Resized%20Artwork/c_fit,g_north_west,h_1054,w_1054/co_ffffff,e_outline:53/co_ffffff,e_outline:inner_fill:53/co_bbbbbb,e_outline:3:1000/c_mpad,g_center,h_1260,w_1260/b_rgb:eeeeee/c_limit,f_jpg,h_630,q_90,w_630/v1538161028/production/designs/3228139_2.jpg");
+    box1 = new Objekti(size);
 }
+
 function draw () {
-    background (100,120,254);
-
-    var vol = mic.getLevel();
-    ellipse(width / 2, height / 2, vol * width);
-    rect(30, 40, vol*width, vol * height);
-
-
+    background (11,230,123);
+    box1.display();
 }
 
+class Objekti {
+  constructor(size) {
+      this.size = size;
 
-function touchStarted(){
+  }
+  display(){
+    push();
+      rotateX(frameCount * speed);
+      rotateY(frameCount * speed);
+
+      translate(mouseX/2,mouseY/2);
+      texture(img);
+      box( 100, 320, 100);
+    pop();
+
+    push();
 
 
-  getAudioContext().resume();
+      texture(img);
+      rotateX(frameCount * speed);
+        rotateY(frameCount * speed *2);
+      sphere(100);
+    pop();
+  }
 }
