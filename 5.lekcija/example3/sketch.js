@@ -1,35 +1,31 @@
 var canvas;
-let mic;
+let n = 0.0;
+let increment = 0.1;
+let y = [];
+let x = [];
 
-
-function windowResized() {
-  console.log('resized');
-  resizeCanvas(windowWidth, windowHeight);
-}
 function setup () {
     canvas = createCanvas (windowWidth,windowHeight);
     canvas.position (0,0);
     canvas.style ('z-index', '-1');
-    mic = new p5.AudioIn();
-    mic.start();
 
-
-
-
-}
-function draw () {
     background (100,120,254);
 
-    var vol = mic.getLevel();
-    ellipse(width / 2, height / 2, vol * width);
-    rect(30, 40, vol*width, vol * height);
+    for(let i = 0; i <20; i++){
+      x[i]= random(0,windowWidth);
+      y[i]= random(0,windowHeight);
 
-
+    }
 }
 
+function draw () {
 
-function touchStarted(){
+  n+=increment;
+  for (let i = 0; i<13; i++){
+  let pos = noise(n)*1000;
+  stroke(random(0,255),random(0,255),random(0,255));
 
-
-  getAudioContext().resume();
+  line(x[i]+pos,y[i],x[i]+pos,y[i]+50);
+}
+  increment++;
 }
